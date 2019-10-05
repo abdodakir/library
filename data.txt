@@ -1,0 +1,37 @@
+users = {
+    "username": "",
+    "password": "",
+    "type_user": "",
+    "last_name": "",
+    "first_name": "",
+    "date_born": "",
+    "scolar_year": "",
+    "classe": "",
+    "nbr_emprunt": 0,
+    "mail": "",
+    "phone": "",
+    "book_yet": [{
+        "date_pres": "",
+        "isbn": ""
+    }],
+    "book_read": [{
+        "date_pres": "",
+        "date_remise": "",
+        "isbn": ""
+    }],
+    "adresse": {
+        "rue": "",
+        "city_actuelle": "",
+        "city_born": ""
+    }
+}
+
+books = {
+    "isbn": "",
+    "titre_book": "",
+    "num_edition": "",
+    "date_edition": "",
+    "specialite": [],
+    "nbr_ouvrage": "",
+    "auteur": []
+}
