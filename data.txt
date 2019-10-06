@@ -1,7 +1,7 @@
 users = {
     "username": "",
     "password": "",
-    "type_user": "",
+    "type_user": "", # student, author, admin
     "last_name": "",
     "first_name": "",
     "date_born": "",
@@ -19,7 +19,7 @@ users = {
         "date_remise": "",
         "isbn": ""
     }],
-    "adresse": {
+    "address": {
         "rue": "",
         "city_actuelle": "",
         "city_born": ""
