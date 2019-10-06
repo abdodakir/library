@@ -36,7 +36,7 @@ def list_books():
             else:
                 return jsonify({"success": False, "action": "action error"}), 301
         else:
-            return jsonify({"success": False, "action": "not exist"}), 301    
+            return jsonify({"success": False, "action": "not exist"}), 301
     
     if request.method == 'POST':
         data = request.get_json()
@@ -81,6 +81,13 @@ def list_books():
                         except expression as e:
                             return jsonify({"success": False, "error": e})
                     return jsonify({"success": True})
+            if data["action"] == "delete":
+                if "isbn" in data:
+                    try:
+                        books.delete_one({"isbn": data.get("isbn")})
+                    except expression as e:
+                        return jsonify({"success": False, "error": e})
+                return jsonify({"success": True})
             else:
                 return jsonify({"success": False, "action": "action error"}), 301
         else:
@@ -90,9 +97,33 @@ def list_books():
 
 @app.route('/users', methods=['GET', 'POST'])
 def users():
+    users = db.users
+    user = {}
+    if request.method == 'GET':
+        data = request.get_json()
+        # get a list of users
+        if "action" in data:
+            if data["action"] == "get_users":
+                orgs = [serial(item) for item in users.find()]
+                return jsonify({"success": True, "users": orgs}), 201
+            else:
+                return jsonify({"success": False, "action": "action error"}), 301
+        else:
+            return jsonify({"success": False, "action": "not exist"}), 301
+    if request.method == 'POST':
+        pass
+
+@app.route('/login', methods=['GET'])
+def login():
+    users = db.users
+    user = {}
+    if request.method == 'GET':
+        data = request.get_json()
+        if "action" in data:
+            if data["action"] == 'login':
+                ur = users.find_one({'username': data.get("username")})
+                
     pass
-
-
 
 if __name__ == '__main__':
     app.run()
